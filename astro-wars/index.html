@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astro Wars</title>
-    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Astro Wars</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <canvas id="game" ></canvas>
-    <script type="module" src="./src/main.js">  </script>
+  <!-- Accesibilidad: contraste alto via class 'contrast' en <body> -->
+  <canvas id="game" aria-label="Lienzo del juego Astro Wars"></canvas>
+
+  <!-- Overlay: Pantalla de inicio / Menú -->
+  <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="title">
+    <h1 id="title">Astro Wars</h1>
+
+    <div class="row">
+      <button id="startBtn" class="btn primary" aria-label="Iniciar juego (Enter)">▶ Iniciar</button>
+      <button id="pauseBtn" class="btn" aria-label="Pausar/Continuar (P)">⏸ Pausa (P)</button>
+    </div>
+
+    <div class="card">
+      <h2>Accesibilidad</h2>
+      <div class="row">
+        <button id="muteBtn" class="btn" aria-pressed="false" aria-label="Silenciar/activar sonidos (M)">🔈 Sonido: ON</button>
+        <button id="contrastBtn" class="btn" aria-pressed="false" aria-label="Alternar alto contraste (H)">🌓 Contraste</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Controles</h2>
+      <ul class="controls">
+        <li>Movimiento: <strong>WASD</strong> o <strong>Flechas</strong></li>
+        <li>Disparar: <strong>Espacio</strong></li>
+        <li>Pausa: <strong>P</strong></li>
+        <li>Silenciar: <strong>M</strong></li>
+        <li>Alto contraste: <strong>H</strong></li>
+      </ul>
+    </div>
+
+    <p class="hint">Consejo: da clic al lienzo para asegurar el enfoque del teclado.</p>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>
